@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
@@ -36,6 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                               fontWeight: FontWeight.bold),
                         ),
                         CupertinoTextField(
+                          keyboardType: TextInputType.phone,
                           placeholder: "Номер телефона",
                           placeholderStyle: TextStyle(
                               color: Colors.black.withOpacity(0.4),
@@ -48,14 +50,19 @@ class _LoginPageState extends State<LoginPage> {
                           maxLength: 9,
                           prefix: Row(
                             children: [
-                              Image.asset("./assets/icons/flags/tj.svg", width: 24),
+                              Image.asset(
+                                "icons/flags/tj.png",
+                              ),
+                              Container(
+                                width: 4,
+                              ),
                               Text(
-                            "+992",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black.withOpacity(0.4),
-                                fontWeight: FontWeight.w600),
-                          ),
+                                "+992",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black.withOpacity(0.4),
+                                    fontWeight: FontWeight.w600),
+                              ),
                             ],
                           ),
                           padding: const EdgeInsets.all(18),
