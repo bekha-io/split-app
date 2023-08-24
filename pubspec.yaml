@@ -1,0 +1,43 @@
+name: firstapp
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: false
+
+  assets:
+    - assets/
+  
+  fonts:
+    - family: 'e-Ukraine'
+      fonts:
+        - asset: 'fonts/e-Ukraine-UltraLight.otf'
+        - weight: 200
+
+        - asset: 'fonts/e-Ukraine-Thin.otf'
+        - weight: 100
+
+        - asset: 'fonts/e-Ukraine-Regular.otf'
+        - weight: 400
+
+        - asset: 'fonts/e-Ukraine-Medium.otf'
+        - weight: 500
+
+        - asset: 'fonts/e-Ukraine-Light.otf'
+        - weight: 300
+
+        - asset: 'fonts/e-Ukraine-Bold.otf'
+        - weight: 700
