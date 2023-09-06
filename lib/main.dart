@@ -1,4 +1,6 @@
+import 'package:firstapp/pages/home.dart';
 import 'package:firstapp/pages/login.dart';
+import 'package:firstapp/pages/verifyCode.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,14 +13,22 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WidgetsApp(
+    return MaterialApp(
+      theme: ThemeData(
+        fontFamily: "Ubuntu",
+        colorScheme: ColorScheme(
+          brightness: Brightness.light, primary: Colors.black, 
+          onPrimary: Colors.black54, secondary: Colors.deepPurple.shade600, 
+          onSecondary: Colors.deepPurple.shade200, 
+          error: Colors.red.shade400, onError: Colors.red.shade200, background: Colors.white, 
+          onBackground: Colors.white, surface: Colors.transparent, 
+          onSurface: Colors.transparent)
+      ),
       color: Colors.white,
-      pageRouteBuilder: <T>(RouteSettings settings, WidgetBuilder builder) {
-        return CupertinoPageRoute(builder: builder, settings: settings);
-      },
-      textStyle: const TextStyle(color: Colors.white, fontFamily: "e-Ukraine"),
       routes: <String, WidgetBuilder>{
         '/': (context) => const LoginPage(),
+        'verifyCode': (context) => const VerifyCodePage(),
+        '/home': (context) => const HomePage()
       },
       initialRoute: '/',
     );

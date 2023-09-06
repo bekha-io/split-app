@@ -1,7 +1,12 @@
+import 'package:firstapp/components/button.dart';
+import 'package:firstapp/components/input.dart';
+import 'package:firstapp/components/label.dart';
+import 'package:firstapp/pages/verifyCode.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
+import 'package:m_toast/m_toast.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,83 +18,39 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.symmetric(vertical: 72, horizontal: 32),
-        decoration: BoxDecoration(color: Colors.white),
-        child: Column(
-          textDirection: TextDirection.ltr,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-                constraints: const BoxConstraints(maxWidth: 600),
-                child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 24),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          ".split",
-                          style: TextStyle(
-                              fontSize: 40,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        CupertinoTextField(
-                          keyboardType: TextInputType.phone,
-                          placeholder: "Номер телефона",
-                          placeholderStyle: TextStyle(
-                              color: Colors.black.withOpacity(0.4),
-                              fontWeight: FontWeight.w400),
-                          cursorColor: Colors.black,
-                          decoration: const BoxDecoration(
-                            color: Color(0xF4F4F4),
-                            borderRadius: BorderRadius.all(Radius.circular(18)),
-                          ),
-                          maxLength: 9,
-                          prefix: Row(
-                            children: [
-                              Image.asset(
-                                "icons/flags/tj.png",
-                              ),
-                              Container(
-                                width: 4,
-                              ),
-                              Text(
-                                "+992",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.black.withOpacity(0.4),
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ],
-                          ),
-                          padding: const EdgeInsets.all(18),
-                          style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'e-Ukraine'),
-                        )
-                      ],
-                    ))),
-            Container(
-              constraints: BoxConstraints.expand(width: 330, height: 55),
-              child: CupertinoButton(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                color: Colors.black,
-                child: const Text(
-                  "Войти",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'e-Ukraine',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700),
+    return Scaffold(
+      body: Padding(
+          padding: const EdgeInsets.all(36.0),
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SplitPageHeader(text: "Войдите"),
+                const SizedBox(height: 14),
+                const SplitPageHeaderDescription(text: "Введите номер телефона и пароль для входа в приложение"),
+                const SizedBox(height: 24,),
+                const SplitTextField(
+                  label: "Номер телефона",
+                  keyboardType: TextInputType.phone,
                 ),
-                onPressed: () {},
-              ),
-            )
-          ],
-        ));
+                const SizedBox(height: 24,),
+                const SplitTextField(
+                  label: "Пароль",
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: true,
+                ),
+                const SizedBox(height: 48,),
+                Row(
+                  children: [Expanded(child: SplitButton(text: "Войти", onPressed: handleLoginButton),)],)
+              ],
+            ),
+          )),
+    );
+  }
+
+  void handleLoginButton() {
+    Navigator.push(context, CupertinoPageRoute(builder: (context) => const VerifyCodePage()));
   }
 }

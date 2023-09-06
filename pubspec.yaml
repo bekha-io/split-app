@@ -1,15 +1,17 @@
 name: firstapp
 description: A new Flutter project.
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: ">=3.1.0 <4.0.0"
 
 dependencies:
+  carousel_slider: ^4.2.1
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.7
+  m_toast: ^0.2.2
 
 dev_dependencies:
   flutter_test:
@@ -17,28 +19,29 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
-  uses-material-design: false
-
-  assets:
-    - assets/
+  uses-material-design: true
   
+  assets:
+    - assets/icons/flags/
+    - assets/icons/ui/
+
   fonts:
     - family: 'e-Ukraine'
       fonts:
-        - asset: 'fonts/e-Ukraine-UltraLight.otf'
+        - asset: "fonts/e-Ukraine-UltraLight.otf"
         - weight: 200
 
-        - asset: 'fonts/e-Ukraine-Thin.otf'
+        - asset: "fonts/e-Ukraine-Thin.otf"
         - weight: 100
 
-        - asset: 'fonts/e-Ukraine-Regular.otf'
+        - asset: "fonts/e-Ukraine-Regular.otf"
         - weight: 400
 
-        - asset: 'fonts/e-Ukraine-Medium.otf'
+        - asset: "fonts/e-Ukraine-Medium.otf"
         - weight: 500
 
-        - asset: 'fonts/e-Ukraine-Light.otf'
+        - asset: "fonts/e-Ukraine-Light.otf"
         - weight: 300
 
-        - asset: 'fonts/e-Ukraine-Bold.otf'
+        - asset: "fonts/e-Ukraine-Bold.otf"
         - weight: 700
