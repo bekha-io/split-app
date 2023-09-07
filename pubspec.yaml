@@ -24,6 +24,7 @@ flutter:
   assets:
     - assets/icons/flags/
     - assets/icons/ui/
+    - assets/3d/
 
   fonts:
     - family: 'e-Ukraine'

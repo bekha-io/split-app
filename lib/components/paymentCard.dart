@@ -31,7 +31,7 @@ class _SplitPaymentCardState extends State<SplitPaymentCard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [
-              Text("somoney", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700),),
+              Text("zypl.bank", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700),),
             ],
           ), // Bank title
           const Spacer(),

@@ -8,39 +8,57 @@ enum ButtonType {
   secondary;
 }
 
-
 class SplitButton extends StatefulWidget {
-  const SplitButton({super.key, required this.text, this.onPressed, this.type = ButtonType.primary});
+  const SplitButton(
+      {super.key,
+      required this.text,
+      this.onPressed,
+      this.type = ButtonType.primary});
 
   final String text;
   final VoidCallback? onPressed;
-  final ButtonType type; 
+  final ButtonType type;
 
   @override
   State<SplitButton> createState() => _SplitButtonState();
 }
 
 class _SplitButtonState extends State<SplitButton> {
-
   final primaryBackgroundColor = Colors.black;
   final secondaryBackgroundColor = Colors.transparent;
 
-  final TextStyle primaryTextStyle = const TextStyle(color: Colors.white, fontSize: 16);
-  final TextStyle secondaryTextStyle = const TextStyle(color: Colors.black, fontSize: 16);
+  final TextStyle primaryTextStyle =
+      const TextStyle(color: Colors.white, fontSize: 16);
+  final TextStyle secondaryTextStyle =
+      const TextStyle(color: Colors.black, fontSize: 16);
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(onPressed: widget.onPressed,
-    style: ButtonStyle(
-      shape: MaterialStatePropertyAll(
-        RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14)))),
-      minimumSize: MaterialStatePropertyAll(Size(48, 24)),
-      padding: MaterialStatePropertyAll(EdgeInsets.symmetric(vertical: 18, horizontal: 24)),
-      backgroundColor: MaterialStatePropertyAll(widget.type == ButtonType.primary ? primaryBackgroundColor : secondaryBackgroundColor),
-    ),
-    child: Text(widget.text, style: widget.type == ButtonType.primary ? primaryTextStyle : secondaryTextStyle));
+    return TextButton(
+        onPressed: widget.onPressed,
+        style: ButtonStyle(
+          overlayColor: MaterialStateProperty.resolveWith<Color>(
+              (Set<MaterialState> states) {
+            if (states.contains(MaterialState.pressed)) {
+              if (widget.type == ButtonType.primary) {
+                return Colors.grey.shade800;
+              }
+            }
+            return Colors.transparent;
+          }),
+          shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(14)))),
+          minimumSize: MaterialStatePropertyAll(Size(48, 24)),
+          padding: MaterialStatePropertyAll(
+              EdgeInsets.symmetric(vertical: 18, horizontal: 24)),
+          backgroundColor: MaterialStatePropertyAll(
+              widget.type == ButtonType.primary
+                  ? primaryBackgroundColor
+                  : secondaryBackgroundColor),
+        ),
+        child: Text(widget.text,
+            style: widget.type == ButtonType.primary
+                ? primaryTextStyle
+                : secondaryTextStyle));
   }
-
-
-
 }
